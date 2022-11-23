@@ -1,3 +1,3 @@
 # Challenge Paguelofacil
 
-Mostrar transacciones con diferentes status y poder filtrarlas, ordenarlas, buscarlas y paginarlas
+Consumir API de la plataforma demo, mostrar transacciones con diferentes status y poder filtrarlas, ordenarlas, buscarlas y paginarlas.
