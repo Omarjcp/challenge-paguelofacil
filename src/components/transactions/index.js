@@ -36,6 +36,7 @@ const Transactions = ({ match }) => {
     email: '',
     amountMin: '',
     amountMax: '',
+    cardType: '',
     todayDate: moment().format('YYYY-MM-DD'),
   });
   const [modalOpen, setModalOpen] = useState(false);
@@ -120,6 +121,7 @@ const Transactions = ({ match }) => {
       email: '',
       amountMin: '',
       amountMax: '',
+      cardType: '',
       todayDate: moment().format('YYYY-MM-DD'),
     });
     setSearch('');
@@ -128,10 +130,12 @@ const Transactions = ({ match }) => {
   const startIndex = (currentPage - 1) * selectedPageSize;
   const endIndex = currentPage * selectedPageSize;
 
-  return loading ? (
-    <div className="loading" />
-  ) : (
-    <>
+  const elementToRender = () => {
+    if (loading) {
+      return <div className="loading" />;
+    }
+
+    return (
       <div className="disable-text-selection">
         <ListPageHeading
           heading="Transactions"
@@ -161,6 +165,7 @@ const Transactions = ({ match }) => {
           toggleModal={() => setModalOpen(!modalOpen)}
           resetFilters={resetFilters}
         />
+
         <ModalFiltersTransactions
           modalOpen={modalOpen}
           toggleModal={() => setModalOpen(!modalOpen)}
@@ -168,19 +173,26 @@ const Transactions = ({ match }) => {
           setForm={setForm}
           onSubmitFilter={onSubmitFilter}
         />
-        <ListPageListing
-          items={items}
-          displayMode={displayMode}
-          selectedItems={selectedItems}
-          currentPage={currentPage}
-          totalPage={totalPage}
-          onContextMenuClick={onContextMenuClick}
-          onContextMenu={onContextMenu}
-          onChangePage={setCurrentPage}
-        />
+
+        {items?.length ? (
+          <ListPageListing
+            items={items}
+            displayMode={displayMode}
+            selectedItems={selectedItems}
+            currentPage={currentPage}
+            totalPage={totalPage}
+            onContextMenuClick={onContextMenuClick}
+            onContextMenu={onContextMenu}
+            onChangePage={setCurrentPage}
+          />
+        ) : (
+          <p>No items found</p>
+        )}
       </div>
-    </>
-  );
+    );
+  };
+
+  return elementToRender();
 };
 
 export default Transactions;

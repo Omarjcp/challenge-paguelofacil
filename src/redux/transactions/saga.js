@@ -34,10 +34,13 @@ const getTransactionsRequest = async (orderby, search, filter) => {
       filter.amountMax || Infinity
     }`;
 
+  const conditionalCardType =
+    filter.cardType && `%7CcardType%24eq${filter.cardType}`;
+
   const response = await axios.get(
     `${
       baseUrl + serviceTransactions
-    }?conditional=${`${dateFilter}${conditionalCodOperation}${conditionalStatus}${conditionalEmail}${conditionalAmount}${conditionalSearch}`}%7CidMerchant%24eq${idMerchant}%7CtxType%24ne${txType}`,
+    }?conditional=${`${dateFilter}${conditionalCodOperation}${conditionalStatus}${conditionalEmail}${conditionalAmount}${conditionalCardType}${conditionalSearch}`}%7CidMerchant%24eq${idMerchant}%7CtxType%24ne${txType}`,
     {
       params: {
         sort: orderby,
@@ -48,6 +51,7 @@ const getTransactionsRequest = async (orderby, search, filter) => {
       },
     }
   );
+
   return response;
 };
 

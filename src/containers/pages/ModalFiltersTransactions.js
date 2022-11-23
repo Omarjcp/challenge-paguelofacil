@@ -10,6 +10,33 @@ import {
 } from 'reactstrap';
 import { dictionaryStatus } from './DataListView';
 
+const cardTypes = [
+  {
+    name: 'Visa',
+    value: 'VISA',
+  },
+  {
+    name: 'Mastercard',
+    value: 'MC',
+  },
+  {
+    name: 'Clave',
+    value: 'CLAVE',
+  },
+  {
+    name: 'Pago Cash',
+    value: 'CASH',
+  },
+  {
+    name: 'Nequi',
+    value: 'NEQUI',
+  },
+  {
+    name: 'Crypto',
+    value: 'CRYPTO',
+  },
+];
+
 const ModalFiltersTransactions = ({
   modalOpen,
   toggleModal,
@@ -71,6 +98,15 @@ const ModalFiltersTransactions = ({
           name="amountMax"
           onChange={valueForm}
         />
+        <Label className="mt-4">Card Type</Label>
+        <Input name="cardType" type="select" onChange={valueForm}>
+          <option value="">Type</option>
+          {cardTypes.map((type) => (
+            <option key={type.name} value={type.value}>
+              {type.name}
+            </option>
+          ))}
+        </Input>
       </ModalBody>
       <ModalFooter>
         <Button color="secondary" outline onClick={toggleModal}>
