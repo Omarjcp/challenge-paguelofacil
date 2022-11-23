@@ -14,7 +14,6 @@ import { TRANSACTIONS_GET_LIST } from '../constants';
 import { getTransactionError, getTransactionSuccess } from './actions';
 
 const getTransactionsRequest = async (orderby, search, filter) => {
-  console.log('SAGA');
   const dateFilter = `dateTms%24bt${filter.dateTms}T00%3A00%3A00%3A%3A${filter.todayDate}T23%3A59%3A59`;
 
   const conditionalSearch =

@@ -58,7 +58,6 @@ const Transactions = ({ match }) => {
   const maxTransfers = currentPage * selectedPageSize;
 
   const dispatchTx = () => {
-    console.log('Entra');
     dispatch(
       getTransaction(
         initTransfers,

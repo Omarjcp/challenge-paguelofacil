@@ -12,7 +12,6 @@ import {
 import { injectIntl } from 'react-intl';
 
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
-import IntlMessages from 'helpers/IntlMessages';
 
 import Breadcrumb from '../navs/Breadcrumb';
 
@@ -29,7 +28,6 @@ const ListPageHeading = ({
   onSearchKey,
   orderOptions,
   pageSizes,
-  heading,
   toggleModal,
   resetFilters,
 }) => {
@@ -40,9 +38,7 @@ const ListPageHeading = ({
     <Row>
       <Colxx xxs="12">
         <div className="mb-2">
-          <h1>
-            <IntlMessages id={heading} />
-          </h1>
+          <h1>Transactions</h1>
 
           <div className="text-zero top-right-button-container">
             <Button
@@ -100,10 +96,10 @@ const ListPageHeading = ({
             </div>
             <div className="float-md-right pt-1">
               <span className="text-muted text-small mr-1">
-                <IntlMessages id="viewing" /> {startIndex + 1}-
+                viewing {startIndex + 1}-
                 {totalItemCount >= endIndex ? endIndex : totalItemCount}
                 {` | `}
-                <IntlMessages id="total" /> {totalItemCount}
+                total {totalItemCount}
               </span>
               <UncontrolledDropdown className="d-inline-block">
                 <DropdownToggle caret color="outline-dark" size="xs">

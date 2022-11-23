@@ -8,7 +8,6 @@ import {
   Input,
   Label,
 } from 'reactstrap';
-import IntlMessages from 'helpers/IntlMessages';
 import { dictionaryStatus } from './DataListView';
 
 const ModalFiltersTransactions = ({
@@ -75,7 +74,7 @@ const ModalFiltersTransactions = ({
       </ModalBody>
       <ModalFooter>
         <Button color="secondary" outline onClick={toggleModal}>
-          <IntlMessages id="cancel" />
+          Cancel
         </Button>
         <Button
           color="primary"
@@ -84,7 +83,7 @@ const ModalFiltersTransactions = ({
             onSubmitFilter(e);
           }}
         >
-          <IntlMessages id="submit" />
+          Submit
         </Button>{' '}
       </ModalFooter>
     </Modal>
